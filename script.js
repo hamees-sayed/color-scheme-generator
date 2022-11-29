@@ -1,18 +1,20 @@
 const btn = document.getElementById("btn")
 let scheme = document.getElementById("color-scheme")
+const postArray = []
 
 btn.addEventListener("click", getColorScheme)
 
 function getColorScheme(){
-    fetch(`https://www.thecolorapi.com/scheme?hex=${seedColor()}&mode=${schemeValue()}&count=6`)
-    .then(resp => resp.json())
-    .then(data => {
-        data.colors.map(color => {
-            console.log(color.hex.value)
+    fetch(`https://www.thecolorapi.com/scheme?hex=${seedColor()}&mode=${schemeValue()}&count=5`)
+        .then(resp => resp.json())
+        .then(data => {
+            data.colors.map(color => {
+                return color.hex.value
+            })
         })
-    })
 }
 
+console.log(getColorScheme())
 
 function seedColor() {
     let seedColor = document.getElementById("seed-color").value
@@ -27,3 +29,8 @@ function schemeValue(){
 scheme.onchange = schemeValue
 
 schemeValue()
+
+
+// traverse over the html NodeList with forEach
+// have a let index with number initialised and iterate it for data.colors array
+// then get the array of colors and put them into html
