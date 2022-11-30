@@ -4,7 +4,7 @@ const postArray = []
 
 btn.addEventListener("click", getColorScheme)
 
-function getColorScheme(){
+function getColorScheme() {
     fetch(`https://www.thecolorapi.com/scheme?hex=${seedColor()}&mode=${schemeValue()}&count=5`)
         .then(resp => resp.json())
         .then(data => {
@@ -27,7 +27,7 @@ function seedColor() {
 }
 
 
-function schemeValue(){
+function schemeValue() {
     const scheme = document.getElementById("color-scheme")
     let schemeValue = scheme.value
     return schemeValue
