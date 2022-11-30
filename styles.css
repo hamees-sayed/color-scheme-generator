@@ -69,6 +69,14 @@ button {
    cursor: pointer;
 }
 
+button:hover {
+   background-color: whitesmoke;
+}
+
+button:active {
+   background-color: #ffffff;
+}
+
 #main {
    display: flex;
    justify-content: center;
