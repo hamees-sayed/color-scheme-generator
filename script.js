@@ -1,5 +1,5 @@
 const btn = document.getElementById("btn")
-let scheme = document.getElementById("color-scheme")
+const hexValue = document.querySelectorAll(".hex")
 const postArray = []
 
 btn.addEventListener("click", getColorScheme)
@@ -8,13 +8,18 @@ function getColorScheme(){
     fetch(`https://www.thecolorapi.com/scheme?hex=${seedColor()}&mode=${schemeValue()}&count=5`)
         .then(resp => resp.json())
         .then(data => {
-            data.colors.map(color => {
-                return color.hex.value
-            })
+            fillColor(data)
         })
 }
 
-console.log(getColorScheme())
+function fillColor(data) {
+    for (let i = 0; i < 5; i++) {
+        const colorHex = data.colors[i].hex.value
+
+        document.getElementById(`bar${i}`).style.background = colorHex
+        document.getElementById(`hex${i}`).innerText = colorHex
+    }
+}
 
 function seedColor() {
     let seedColor = document.getElementById("seed-color").value
@@ -23,14 +28,9 @@ function seedColor() {
 
 
 function schemeValue(){
+    const scheme = document.getElementById("color-scheme")
     let schemeValue = scheme.value
     return schemeValue
 }
-scheme.onchange = schemeValue
 
-schemeValue()
-
-
-// traverse over the html NodeList with forEach
-// have a let index with number initialised and iterate it for data.colors array
-// then get the array of colors and put them into html
+getColorScheme()
