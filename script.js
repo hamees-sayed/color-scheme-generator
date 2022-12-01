@@ -1,6 +1,4 @@
 const btn = document.getElementById("btn")
-const hexValue = document.querySelectorAll(".hex")
-const postArray = []
 
 btn.addEventListener("click", getColorScheme)
 
@@ -25,8 +23,7 @@ function seedColor() {
 }
 
 function schemeValue() {
-    const scheme = document.getElementById("color-scheme")
-    let schemeValue = scheme.value
+    let schemeValue = document.getElementById("color-scheme").value
     return schemeValue
 }
 
