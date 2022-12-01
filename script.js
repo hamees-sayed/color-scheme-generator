@@ -12,8 +12,8 @@ function fillColor(data) {
     for (let i = 0; i < data.colors.length; i++) {
         const colorHex = data.colors[i].hex.value
 
-        document.getElementById(`bar${i}`).style.background = colorHex
-        document.getElementById(`hex${i}`).innerText = colorHex
+        document.getElementById("main").children[i].style.background = colorHex
+        document.querySelector(".foot").children[i].innerText = colorHex
     }
 }
 
